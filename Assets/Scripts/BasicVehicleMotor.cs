@@ -4,12 +4,12 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class BasicVehicleMotor : MonoBehaviour {
 
-	public float maxSpeed;
-	public float accelerationPower;
-	public float maxBrakePower;
-	public float maxBrakeTime;
-	public float steeringPower;
-	public float driftPower;
+	public float maxSpeed = 20;
+	public float accelerationPower = 30;
+	public float maxBrakePower = 3;
+	public float maxBrakeTime = 3;
+	public float steeringPower = 3.5f;
+	public float driftPower = .95f;
 	public float minSpeedToRotate;
 	public float softRotationInertia = 8;
 
@@ -18,7 +18,6 @@ public class BasicVehicleMotor : MonoBehaviour {
 	
 	public Rigidbody2D rigidbody;
 
-	public Vector2 currentVelocity;
 	public float rotation;
 
 	private void Awake() {
@@ -35,7 +34,7 @@ public class BasicVehicleMotor : MonoBehaviour {
 		float forwardSpeed = Vector2.Dot(transform.up, rigidbody.velocity);
 		if (accelerationInput > 0 && rigidbody.velocity.sqrMagnitude >= maxSpeed * maxSpeed) return;
 		if (accelerationInput > 0 && forwardSpeed >= maxSpeed) return;
-		if (accelerationInput < 0 && forwardSpeed <= -maxSpeed) return;
+		if (accelerationInput < 0 && forwardSpeed <= -maxSpeed / 2f) return;
 
 		if (accelerationInput == 0) rigidbody.drag = Mathf.MoveTowards(rigidbody.drag, maxBrakePower, Time.fixedDeltaTime * maxBrakeTime);
 		else rigidbody.drag = 0;
