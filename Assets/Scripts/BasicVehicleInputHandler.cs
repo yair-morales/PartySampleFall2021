@@ -13,9 +13,11 @@ public class BasicVehicleInputHandler : MonoBehaviour {
 	private void Update() {
 		float verticalInput = Input.GetAxis("Vertical");
 		float horizontalInput = Input.GetAxis("Horizontal");
+		float boostInput = Input.GetButton("Fire2") ? 1 : 0;
 
 		motor.accelerationInput = verticalInput;
 		motor.steeringInput = horizontalInput;
+		motor.boostInput = boostInput;
 
 		float wheelRotation = -horizontalInput;
 
