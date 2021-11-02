@@ -5,6 +5,7 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
+          <e p="AudioManager.cs" t="Include" />
           <e p="BasicVehicleInputHandler.cs" t="Include" />
           <e p="BasicVehicleMotor.cs" t="Include" />
           <e p="CameraFollower.cs" t="Include" />
@@ -12,6 +13,7 @@
         </e>
         <e p="Tests" t="Include">
           <e p="OnCollisionTest.cs" t="Include" />
+          <e p="Restart.cs" t="Include" />
           <e p="TestController.cs" t="Include" />
         </e>
       </e>
