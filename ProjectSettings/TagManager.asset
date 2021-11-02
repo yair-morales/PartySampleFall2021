@@ -4,7 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy
+  - Police
+  - Damagable
   layers:
   - Default
   - TransparentFX
