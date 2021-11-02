@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,12 +16,12 @@ public class HealthScript : MonoBehaviour
         HP -= dmg;
         if (HP <= 0)
         { 
-            onDeath?.Invoke();
+            onDeathAction?.Invoke();
             dead = true;
         }
     }
 
-    public void OnHealthRestore(int heal, Vector3 dir)
+    public void OnHealthRestore(int heal)
     {
         if (HP >= maxHP) return;
         if (HP + heal > maxHP)
