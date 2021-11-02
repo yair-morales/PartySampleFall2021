@@ -2,35 +2,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class HealthScript : MonoBehaviour
-{
-    public int HP;
-    public Action onDeathAction;
+public class HealthScript : MonoBehaviour {
+    
+    public int hp;
+    public Action<Vector3> onDeathAction;
     public bool dead; 
     public int maxHP;
 
-    public void OnDamageTaken(int dmg, Vector3 dir)
-    {
+    public void OnDamageTaken(int dmg, Vector3 dir) {
         if (dmg < 0 || dead) return;
-        HP -= dmg;
-        if (HP <= 0)
-        { 
-            onDeathAction?.Invoke();
+        hp -= dmg;
+        if (hp <= 0) {
+            onDeathAction?.Invoke(dir);
             dead = true;
         }
     }
 
-    public void OnHealthRestore(int heal)
-    {
-        if (HP >= maxHP) return;
-        if (HP + heal > maxHP)
-        {
-            HP = maxHP;
-        }
-        else
-        {
-            HP += heal;
+    public void OnHealthRestore(int heal) {
+        if (hp >= maxHP) return;
+        if (hp + heal > maxHP) {
+            hp = maxHP;
+        } else {
+            hp += heal;
         }
     }
 }

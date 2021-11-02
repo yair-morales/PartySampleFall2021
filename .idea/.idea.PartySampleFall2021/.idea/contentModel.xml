@@ -8,11 +8,13 @@
           <e p="AudioManager.cs" t="Include" />
           <e p="BasicVehicleInputHandler.cs" t="Include" />
           <e p="BasicVehicleMotor.cs" t="Include" />
+          <e p="Bullet.cs" t="Include" />
           <e p="CameraFollower.cs" t="Include" />
           <e p="CrimeManager.cs" t="Include" />
           <e p="HealthScript.cs" t="Include" />
           <e p="PoliceCar.cs" t="Include" />
           <e p="Restart.cs" t="Include" />
+          <e p="Shooter.cs" t="Include" />
           <e p="SimpleWalk.cs" t="Include" />
         </e>
         <e p="Tests" t="Include">
