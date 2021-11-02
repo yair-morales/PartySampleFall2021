@@ -11,6 +11,7 @@
           <e p="CameraFollower.cs" t="Include" />
           <e p="CrimeManager.cs" t="Include" />
           <e p="HealthScript.cs" t="Include" />
+          <e p="PoliceCar.cs" t="Include" />
           <e p="Restart.cs" t="Include" />
           <e p="SimpleWalk.cs" t="Include" />
         </e>
