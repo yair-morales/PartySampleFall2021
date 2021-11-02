@@ -9,11 +9,13 @@
           <e p="BasicVehicleInputHandler.cs" t="Include" />
           <e p="BasicVehicleMotor.cs" t="Include" />
           <e p="CameraFollower.cs" t="Include" />
+          <e p="CrimeManager.cs" t="Include" />
+          <e p="HealthScript.cs" t="Include" />
+          <e p="Restart.cs" t="Include" />
           <e p="SimpleWalk.cs" t="Include" />
         </e>
         <e p="Tests" t="Include">
           <e p="OnCollisionTest.cs" t="Include" />
-          <e p="Restart.cs" t="Include" />
           <e p="TestController.cs" t="Include" />
         </e>
       </e>
