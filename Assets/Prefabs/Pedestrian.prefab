@@ -90,9 +90,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7908964625128282524}
-  - component: {fileID: 7908964625128282523}
   - component: {fileID: 7908964625128282522}
   - component: {fileID: 7908964625128282521}
+  - component: {fileID: 4055274850894229070}
+  - component: {fileID: 7908964625128282523}
   - component: {fileID: 7908964625128282520}
   m_Layer: 0
   m_Name: Pedestrian
@@ -116,22 +117,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &7908964625128282523
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7908964625128282525}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!114 &7908964625128282522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +149,45 @@ MonoBehaviour:
   hp: 100
   dead: 0
   maxHP: 100
+  destroyOnDeath: 0
+--- !u!114 &4055274850894229070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7908964625128282525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f90a76680c4f44cc6a8510504aab59d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  decisionInterval: 0.5
+  runawaySpeed: 5
+  calmDistance: 15
+  rigidbody: {fileID: 0}
+  walk: {fileID: 0}
+  health: {fileID: 0}
+  runaway: 0
+  from: {fileID: 0}
+  direction: {x: 0, y: 0, z: 0}
+  lastDecisionTime: 0
+--- !u!58 &7908964625128282523
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7908964625128282525}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.38
 --- !u!50 &7908964625128282520
 Rigidbody2D:
   serializedVersion: 4

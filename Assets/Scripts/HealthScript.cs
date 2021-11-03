@@ -7,16 +7,26 @@ using UnityEngine.Serialization;
 public class HealthScript : MonoBehaviour {
     
     public int hp;
-    public Action<Vector3, bool> onDeathAction;
-    public bool dead; 
+    public event Action<Vector3, Transform> onDmgAction;
+    public event Action<Vector3, Transform> onDeathAction;
+    public bool dead;
     public int maxHP;
+    public bool destroyOnDeath;
+    public float destroyDelay;
+    public float destroyRecord;
 
-    public bool OnDamageTaken(int dmg, Vector2 dir, bool fromPlayer = true) {
+    private void Update() {
+        if (dead && destroyOnDeath && Time.timeSinceLevelLoad - destroyRecord >= destroyDelay) Destroy(gameObject);
+    }
+
+    public bool OnDamageTaken(int dmg, Vector2 dir, Transform from) {
         if (dmg < 0 || dead) return false;
         hp -= dmg;
+        onDmgAction?.Invoke(dir, from);
         if (hp <= 0) {
-            onDeathAction?.Invoke(dir, fromPlayer);
+            onDeathAction?.Invoke(dir, from);
             dead = true;
+            destroyRecord = Time.timeSinceLevelLoad;
             return true;
         }
 

@@ -8,11 +8,14 @@ public class BasicVehicleInputHandler : MonoBehaviour {
 	public float minSpeedToDmg = 5f;
 	public int minSmashDmg = 10;
 	public int maxSmashDmg = 100;
+	public float dustThreshold = .9f;
 
+	public ParticleSystem dustPlayer;
 	public BasicVehicleMotor motor;
 	public Transform frame;
 	public Transform[] wheels;
 
+	private bool dustMark;
 	private Rigidbody2D _rigidbody;
 	private Dictionary<int, float> _dmgInfo = new Dictionary<int, float>();
 	private List<int> _tempList = new List<int>();
@@ -30,6 +33,9 @@ public class BasicVehicleInputHandler : MonoBehaviour {
 		motor.accelerationInput = verticalInput;
 		motor.steeringInput = horizontalInput;
 		motor.boostInput = boostInput;
+		
+		if (Mathf.Abs(horizontalInput) >= dustThreshold) MakeDust();
+		else StopDust();
 
 		float wheelRotation = -horizontalInput;
 
@@ -66,7 +72,21 @@ public class BasicVehicleInputHandler : MonoBehaviour {
 		var vel = _rigidbody.velocity;
 		var spd = Vector3.Dot(vel, dir);
 		var dmg = Mathf.Lerp(minSmashDmg, maxSmashDmg, (spd - minSpeedToDmg) / (motor.maxBoostSpeed - minSmashDmg));
-		health.OnDamageTaken((int) dmg, vel.normalized);
+		health.OnDamageTaken((int) dmg, vel.normalized, transform);
+	}
+
+	public void MakeDust() {
+		if (!dustMark) {
+			dustPlayer.Play();
+			dustMark = true;
+		}
+	}
+
+	public void StopDust() {
+		if (dustMark) {
+			dustPlayer?.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+			dustMark = false;
+		}
 	}
 
 	private void OnCollisionEnter2D(Collision2D other) => Hit(other);

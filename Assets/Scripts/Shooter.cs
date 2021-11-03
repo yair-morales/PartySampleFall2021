@@ -18,8 +18,8 @@ public class Shooter : MonoBehaviour
 
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0;
-        cursor.position = mousePosition;
-        firePoint.up = (cursor.position - firePoint.position).normalized;
+        if (cursor) cursor.position = mousePosition;
+        firePoint.up = (mousePosition - firePoint.position).normalized;
 
         if (Input.GetKey(fire)){
             Shoot();
