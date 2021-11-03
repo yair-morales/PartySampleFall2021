@@ -21,6 +21,10 @@ public class PedestrianAI : MonoBehaviour {
 	public float lastDecisionTime;
 
 	public ParticleSystem bloodPlayer;
+	public ParticleSystem deathPlayer;
+	public SpriteRenderer sprite;
+	public Color originalColor;
+	public Color panicColor;
 	public GameObject corpse;
 	
 	private void Awake() {
@@ -29,9 +33,15 @@ public class PedestrianAI : MonoBehaviour {
 		health = GetComponent<HealthScript>();
 		if (health) {
 			health.onDmgAction += OnHit;
-			health.onDeathAction += (vector3, tf) => {
-				Instantiate(corpse, transform.position, Quaternion.identity);
+			health.onDeathAction += (dir, tf) => {
+				rigidbody.velocity = dir * 2;
+				deathPlayer?.Play();
+				if (corpse) Instantiate(corpse, transform.position, Quaternion.identity);
 			};
+		}
+
+		if (sprite) {
+			originalColor = sprite.color;
 		}
 	}
 
@@ -44,6 +54,7 @@ public class PedestrianAI : MonoBehaviour {
 			runaway = false;
 			from = null;
 			if (walk) walk.enabled = true;
+			if (sprite) sprite.color = originalColor;
 		}
 		var time = Time.timeSinceLevelLoad;
 		if (time - lastDecisionTime >= decisionInterval) {
@@ -65,5 +76,6 @@ public class PedestrianAI : MonoBehaviour {
 		walk.enabled = false;
 		direction = (transform.position - from.position).normalized;
 		lastDecisionTime = Time.timeSinceLevelLoad;
+		if (sprite) sprite.color = panicColor;
 	}
 }

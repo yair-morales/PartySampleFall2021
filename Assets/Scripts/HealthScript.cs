@@ -15,6 +15,10 @@ public class HealthScript : MonoBehaviour {
     public float destroyDelay;
     public float destroyRecord;
 
+    private void Awake() {
+        hp = maxHP;
+    }
+
     private void Update() {
         if (dead && destroyOnDeath && Time.timeSinceLevelLoad - destroyRecord >= destroyDelay) Destroy(gameObject);
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class BasicVehicleInputHandler : MonoBehaviour {
 
 	public float dmgMinInterval = .1f;
-	public float minSpeedToDmg = 5f;
+	public float minSpeedToDmg = 1f;
 	public int minSmashDmg = 10;
 	public int maxSmashDmg = 100;
 	public float dustThreshold = .9f;
@@ -68,10 +68,16 @@ public class BasicVehicleInputHandler : MonoBehaviour {
 		var id = health.GetInstanceID();
 		if (_dmgInfo.ContainsKey(id) && (Time.timeSinceLevelLoad - _dmgInfo[id]) < dmgMinInterval) return;
 		_dmgInfo[id] = Time.timeSinceLevelLoad;
-		var dir = (Vector2) (other.transform.position - transform.position).normalized;
-		var vel = _rigidbody.velocity;
-		var spd = Vector3.Dot(vel, dir);
-		var dmg = Mathf.Lerp(minSmashDmg, maxSmashDmg, (spd - minSpeedToDmg) / (motor.maxBoostSpeed - minSmashDmg));
+		var contact = other.GetContact(0);
+		// var dir = (contact.point - (Vector2) transform.position).normalized;
+		// var vel = _rigidbody.velocity;
+		var vel = contact.relativeVelocity;
+		// var spd = Vector3.Dot(vel, dir);
+		var spd = vel.magnitude;
+		// print(other.collider.name + " SPD " + spd.ToString("F3"));
+		if (spd < minSpeedToDmg) return;
+		var dmg = Mathf.Lerp(minSmashDmg, maxSmashDmg, (spd - minSpeedToDmg) / (motor.maxBoostSpeed - minSpeedToDmg));
+		// print("DMG " + dmg);
 		health.OnDamageTaken((int) dmg, vel.normalized, transform);
 	}
 
@@ -90,6 +96,10 @@ public class BasicVehicleInputHandler : MonoBehaviour {
 	}
 
 	private void OnCollisionEnter2D(Collision2D other) => Hit(other);
-
+	
 	private void OnCollisionStay2D(Collision2D other) => Hit(other);
+
+	// private void OnTriggerEnter2D(Collider2D other) => Hit(other);
+
+	// private void OnTriggerStay2D(Collider2D other) => Hit(other);
 }
