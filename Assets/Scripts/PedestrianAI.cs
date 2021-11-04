@@ -21,7 +21,6 @@ public class PedestrianAI : MonoBehaviour {
 	public float lastDecisionTime;
 
 	public ParticleSystem bloodPlayer;
-	public ParticleSystem deathPlayer;
 	public SpriteRenderer sprite;
 	public Color originalColor;
 	public Color panicColor;
@@ -35,7 +34,6 @@ public class PedestrianAI : MonoBehaviour {
 			health.onDmgAction += OnHit;
 			health.onDeathAction += (dir, tf) => {
 				rigidbody.velocity = dir * 2;
-				deathPlayer?.Play();
 				if (corpse) Instantiate(corpse, transform.position, Quaternion.identity);
 			};
 		}
