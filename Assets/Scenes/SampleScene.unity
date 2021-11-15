@@ -1951,11 +1951,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23f17ed22dac14dc5a7d7afb29a3494e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 1958923095}
-  bulletPrefab: {fileID: 687858453750663252, guid: 43e2a7c02cb2c4c9384a2cda910a2a16,
-    type: 3}
-  fire: 0
-  cursor: {fileID: 1697407143}
 --- !u!4 &2008214984 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 648992873088106755, guid: e726ba5d7b36345d5ac11b0370832780,
