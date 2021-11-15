@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Police
   - Damagable
+  - Nitro
   layers:
   - Default
   - TransparentFX
