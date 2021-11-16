@@ -12,7 +12,8 @@ public class PoliceCar : MonoBehaviour {
     public Transform player;
     public float chaseDist = 5;
     public float stopDist = 8;
-    
+    public float detectDist = 15;
+
     public float dmgMinInterval = .5f;
     public float minSpeedToDmg = 1f;
     public int minSmashDmg = 25;
@@ -23,15 +24,30 @@ public class PoliceCar : MonoBehaviour {
     private Dictionary<int, float> _dmgInfo = new Dictionary<int, float>();
     private List<int> _tempList = new List<int>();
 
+	private CrimeManager crimeManager;
+	private bool alerted;
+
     private void Awake() {
         if (motor == null) motor = GetComponent<BasicVehicleMotor>();
+		crimeManager = GetComponent<CrimeManager>();
+		if (crimeManager) crimeManager.onCrimeHappen += UpdateCrime;
     }
 
     private void Update() {
+		if (!alerted) {
+			motor.accerationInput = 0;
+			return;
+		}
+		Vector3 direction = player.position - transform.position;
+		direction.Normalize();
+		float strInput = Vector3.Dot(direction, transform.right);
+        motor.steeringInput = strInput;
+
         Vector3 displacement = player.position - frame.position;
         dist = displacement.magnitude;
         if (dist > stopDist)
-        {
+       	{
+			alerted = false;
             motor.accelerationInput = 0;
             motor.boostInput = 0;
         } else if (chaseDist < dist && dist <= stopDist)
@@ -43,17 +59,7 @@ public class PoliceCar : MonoBehaviour {
             motor.accelerationInput = 1;
             motor.boostInput = 1;
         }
-        Vector3 direction = player.position - transform.position;
-		direction.Normalize();
-		float strInput = Vector3.Dot(direction, transform.right);
-        //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        //motor.rigidbody.rotation = strInput;
-		//float normAngle = angle / 180;
-        //direction.Normalize();
-		//frame.LookAt(player);
-
-        //motor.accelerationInput = ;
-        motor.steeringInput = strInput;
+        
         
         if (Mathf.Abs(strInput) >= dustThreshold) MakeDust();
         else StopDust();
@@ -71,6 +77,17 @@ public class PoliceCar : MonoBehaviour {
         
         UpdateDmgInfo();
     }
+
+	private void UpdateCrime() {
+		Vector3 direction = player.position - transform.position;
+		direction.Normalize();
+		float strInput = Vector3.Dot(direction, transform.right);
+
+		if (strInput > 0 && direction.magnitude < detectDist) {
+			//crimeManager.onCrimeHappen.Invoke(player.position, direction);
+			alerted = true;
+		}
+	}
     
     private void UpdateDmgInfo() {
 		
