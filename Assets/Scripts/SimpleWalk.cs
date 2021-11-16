@@ -11,22 +11,27 @@ public class SimpleWalk : MonoBehaviour {
 	public int currentIndex;
 	public float speed = 1;
 
-	public void Awake() {
-		currentTarget = waypoints[0];
-		currentIndex = 0;
-		if (rigidbody == null) {
-			rigidbody = GetComponent<Rigidbody2D>();
+	public void Start() {
+		if (waypoints.Length > 0) {
+			currentTarget = waypoints[0];
+			currentIndex = 0;
 		}
+		
+		if (rigidbody == null) rigidbody = GetComponent<Rigidbody2D>();
 	}
 
-	public void Update() {
+	public void EfficientUpdate() {
 		// transform.position = Vector3.MoveTowards(transform.position, currentTarget.position, speed * Time.deltaTime);
+		if (!currentTarget) {
+			if (waypoints.Length > 0) {
+				currentTarget = waypoints[0];
+				currentIndex = 0;
+			} else return;
+		}
 		rigidbody.velocity = (currentTarget.position - transform.position).normalized * speed;
 		if ((transform.position - currentTarget.position).magnitude < 0.1f) {
 			currentIndex += 1;
-			if (currentIndex == waypoints.Length) {
-				currentIndex = 0;
-			}
+			if (currentIndex == waypoints.Length) currentIndex = 0;
 			currentTarget = waypoints[currentIndex];
 		}
 	}

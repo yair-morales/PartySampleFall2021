@@ -5,15 +5,25 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
+          <e p="ATM.cs" t="Include" />
           <e p="AudioManager.cs" t="Include" />
           <e p="BasicVehicleInputHandler.cs" t="Include" />
           <e p="BasicVehicleMotor.cs" t="Include" />
+          <e p="Bullet.cs" t="Include" />
           <e p="CameraFollower.cs" t="Include" />
+          <e p="CollisionManager.cs" t="Include" />
+          <e p="CrimeManager.cs" t="Include" />
+          <e p="HealthScript.cs" t="Include" />
+          <e p="MoneyPrefab.cs" t="Include" />
+          <e p="PedestrianAI.cs" t="Include" />
+          <e p="PoliceCar.cs" t="Include" />
+          <e p="RandomWaypoints.cs" t="Include" />
+          <e p="Restart.cs" t="Include" />
+          <e p="Shooter.cs" t="Include" />
           <e p="SimpleWalk.cs" t="Include" />
         </e>
         <e p="Tests" t="Include">
           <e p="OnCollisionTest.cs" t="Include" />
-          <e p="Restart.cs" t="Include" />
           <e p="TestController.cs" t="Include" />
         </e>
       </e>
