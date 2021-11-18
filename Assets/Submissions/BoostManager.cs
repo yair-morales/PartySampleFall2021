@@ -25,14 +25,14 @@ public class BoostManager : MonoBehaviour
     void Start()
     {
         //currentBoostAmount = maxBoostAmount;
-        boostUI.maxValue = maxBoostAmount;
+        if (boostUI) boostUI.maxValue = maxBoostAmount;
         //boostUI.value = maxBoostAmount;
     }
 
     // Update is called once per frame
     void Update()
     {
-        boostUI.value = currentBoostAmount;
+        if (boostUI) boostUI.value = currentBoostAmount;
     }
 
     public void RechargeBoost()

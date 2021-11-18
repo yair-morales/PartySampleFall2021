@@ -2051,6 +2051,31 @@ Transform:
   m_Father: {fileID: 1475272373}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &223922559 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7762796765041121637, guid: a93ca3ed14a9d45b28b3099a573ab922,
+    type: 3}
+  m_PrefabInstance: {fileID: 226672916}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &223922560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223922559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e8e689cb4601479aac1947aac97ae90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basicVehicleInputHandler: {fileID: 0}
+  maxBoostAmount: 100
+  currentBoostAmount: 100
+  boostRechargeRate: 5
+  boostDischargeRate: 10
+  boostUI: {fileID: 0}
+  nitroBoostAmount: 50
 --- !u!1 &225880986
 GameObject:
   m_ObjectHideFlags: 0
@@ -3595,6 +3620,31 @@ Transform:
   m_Father: {fileID: 299522534}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &340931037 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7762796765041121637, guid: a93ca3ed14a9d45b28b3099a573ab922,
+    type: 3}
+  m_PrefabInstance: {fileID: 1486278857}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &340931038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340931037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e8e689cb4601479aac1947aac97ae90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basicVehicleInputHandler: {fileID: 0}
+  maxBoostAmount: 100
+  currentBoostAmount: 100
+  boostRechargeRate: 5
+  boostDischargeRate: 10
+  boostUI: {fileID: 0}
+  nitroBoostAmount: 50
 --- !u!1 &346488853
 GameObject:
   m_ObjectHideFlags: 0
@@ -4018,6 +4068,31 @@ Transform:
   m_Father: {fileID: 1399237211}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &376745273 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7762796765041121637, guid: a93ca3ed14a9d45b28b3099a573ab922,
+    type: 3}
+  m_PrefabInstance: {fileID: 1553572952}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &376745274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376745273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e8e689cb4601479aac1947aac97ae90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basicVehicleInputHandler: {fileID: 0}
+  maxBoostAmount: 100
+  currentBoostAmount: 100
+  boostRechargeRate: 5
+  boostDischargeRate: 10
+  boostUI: {fileID: 0}
+  nitroBoostAmount: 50
 --- !u!1 &378783002
 GameObject:
   m_ObjectHideFlags: 0
@@ -13903,6 +13978,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3be7d4385b2e547979b8c35a0f543c39, type: 3}
+--- !u!1 &1238054920 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7762796765041121637, guid: a93ca3ed14a9d45b28b3099a573ab922,
+    type: 3}
+  m_PrefabInstance: {fileID: 2000097491}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1238054921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238054920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e8e689cb4601479aac1947aac97ae90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basicVehicleInputHandler: {fileID: 0}
+  maxBoostAmount: 100
+  currentBoostAmount: 100
+  boostRechargeRate: 5
+  boostDischargeRate: 10
+  boostUI: {fileID: 0}
+  nitroBoostAmount: 50
 --- !u!1001 &1239336174
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14629,6 +14729,31 @@ Transform:
   m_Father: {fileID: 1346226373}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1318227484 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7762796765041121637, guid: a93ca3ed14a9d45b28b3099a573ab922,
+    type: 3}
+  m_PrefabInstance: {fileID: 1861040950}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1318227485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318227484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e8e689cb4601479aac1947aac97ae90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basicVehicleInputHandler: {fileID: 0}
+  maxBoostAmount: 100
+  currentBoostAmount: 100
+  boostRechargeRate: 5
+  boostDischargeRate: 10
+  boostUI: {fileID: 0}
+  nitroBoostAmount: 50
 --- !u!1001 &1325660856
 PrefabInstance:
   m_ObjectHideFlags: 0
