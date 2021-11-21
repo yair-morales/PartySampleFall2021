@@ -40,7 +40,7 @@ public class BasicVehicleMotor : MonoBehaviour {
 
 	public bool CheckBoost()
     {
-		return boostManager.currentBoostAmount > 0;
+		return boostManager.currentBoostAmount > 0 && boostManager.canBoost;
     }
 
 	private void UpdateEngine() {

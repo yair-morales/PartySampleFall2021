@@ -1,9 +1,10 @@
-﻿using System;
+﻿	using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BasicVehicleInputHandler : MonoBehaviour {
 
+	public ComboMeter comboMeter;
 	public float dmgMinInterval = .1f;
 	public float minSpeedToDmg = 1f;
 	public int minSmashDmg = 10;
@@ -64,7 +65,7 @@ public class BasicVehicleInputHandler : MonoBehaviour {
 
 	private void Hit(Collision2D other) {
 		if (!other.collider.TryGetComponent<HealthScript>(out var health)) return;
-		
+		Debug.Log("hit");
 		var id = health.GetInstanceID();
 		if (_dmgInfo.ContainsKey(id) && (Time.timeSinceLevelLoad - _dmgInfo[id]) < dmgMinInterval) return;
 		_dmgInfo[id] = Time.timeSinceLevelLoad;
@@ -79,6 +80,10 @@ public class BasicVehicleInputHandler : MonoBehaviour {
 		var dmg = Mathf.Lerp(minSmashDmg, maxSmashDmg, (spd - minSpeedToDmg) / (motor.maxBoostSpeed - minSpeedToDmg));
 		// print("DMG " + dmg);
 		health.OnDamageTaken((int) dmg, vel.normalized, transform);
+		if(health.hp <= 0)
+        {
+			comboMeter.OnKill();
+        }
 	}
 
 	public void MakeDust() {

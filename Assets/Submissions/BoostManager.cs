@@ -17,16 +17,28 @@ public class BoostManager : MonoBehaviour
     public float maxBoostAmount;
     public float currentBoostAmount;
     public float boostRechargeRate;
+    private float boostRechargeRateDisabled;
+    private float boostRechargeRateNormal;
     public float boostDischargeRate;
-    public Slider boostUI;
+    public bool canBoost;
+
     public float nitroBoostAmount;
+
+    public Slider boostUI;
+    public Color disabledColor;
+    private Color fillColor;
+    public Image fill;
 
     // Start is called before the first frame update
     void Start()
     {
-        //currentBoostAmount = maxBoostAmount;
-        if (boostUI) boostUI.maxValue = maxBoostAmount;
-        //boostUI.value = maxBoostAmount;
+        boostRechargeRateDisabled = boostRechargeRate / 4;
+        boostRechargeRateNormal = boostRechargeRate;
+        currentBoostAmount = maxBoostAmount;
+        if (boostUI == null)
+            return;
+        fillColor = fill.color;
+        boostUI.maxValue = maxBoostAmount;
     }
 
     // Update is called once per frame
@@ -45,6 +57,12 @@ public class BoostManager : MonoBehaviour
     {
         currentBoostAmount -= boostDischargeRate * Time.deltaTime;
         currentBoostAmount = Mathf.Clamp(currentBoostAmount, 0, maxBoostAmount);
+        if (currentBoostAmount <=0.5f)
+        {
+            canBoost = false;
+            
+            StartCoroutine(boostCooldown(2));
+        }
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
@@ -52,8 +70,17 @@ public class BoostManager : MonoBehaviour
         if (collision.gameObject.CompareTag("Nitro")) {
             currentBoostAmount += nitroBoostAmount;
             Destroy(collision.gameObject);
-            Debug.Log("collided");
         }
+    }
+
+    public IEnumerator boostCooldown(int seconds)
+    {
+        fill.color = disabledColor;
+        boostRechargeRate = boostRechargeRateDisabled;
+        yield return new WaitForSeconds(seconds);
+        boostRechargeRate = boostRechargeRateNormal;
+        fill.color = fillColor;
+        canBoost = true;
     }
 }
 
