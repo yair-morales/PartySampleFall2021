@@ -25,6 +25,8 @@ public class BasicVehicleMotor : MonoBehaviour {
 	public float rotation;
 	public bool isBoosting;
 
+	public BoostManager boostManager;
+
 	private void Awake() {
 		if (rigidbody == null) rigidbody = GetComponent<Rigidbody2D>();
 		if (trail == null) trail = GetComponentInChildren<TrailRenderer>();
@@ -36,11 +38,33 @@ public class BasicVehicleMotor : MonoBehaviour {
 		UpdateSteering();
 	}
 
+	public bool CheckBoost()
+    {
+		return boostManager.currentBoostAmount > 0 && boostManager.canBoost;
+    }
+
 	private void UpdateEngine() {
 		float forwardSpeed = Vector2.Dot(transform.up, rigidbody.velocity);
 
 		if (accelerationInput <= 0 || forwardSpeed <= 0) boostInput = 0;
 
+		if(boostManager != null)
+        {
+			if (!CheckBoost())
+			{
+				boostInput = 0;
+			}
+
+			if (isBoosting)
+			{
+				boostManager.DischargeBoost();
+			}
+			else
+			{
+				boostManager.RechargeBoost();
+			}
+		}
+		
 		var maxSpeed = Mathf.Lerp(this.maxSpeed, this.maxBoostSpeed, boostInput);
 		var accelerationPower = Mathf.Lerp(this.accelerationPower, boostPower, boostInput);
 		
