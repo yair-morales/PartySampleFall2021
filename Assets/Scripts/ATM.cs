@@ -16,6 +16,6 @@ public class ATM : MonoBehaviour {
     }
 
     private void OnHit(Vector3 dir, Transform from) {
-        for(int i=0; i < moneyAmount; i++) Instantiate(moneyPrefab, transform.position + new Vector3(Random.RandomRange(-3,3)+2, Random.RandomRange(-3, 3)+2, 0), moneyPrefab.transform.rotation);
+        for(int i=0; i < moneyAmount; i++) Instantiate(moneyPrefab, transform.position + new Vector3(Random.Range(-3,3)+2, Random.Range(-3, 3)+2, 0), moneyPrefab.transform.rotation);
     }
 }

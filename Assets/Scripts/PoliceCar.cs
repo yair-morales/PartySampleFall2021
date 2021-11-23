@@ -35,7 +35,7 @@ public class PoliceCar : MonoBehaviour {
 
     private void Update() {
 		if (!alerted) {
-			motor.accerationInput = 0;
+			motor.accelerationInput = 0;
 			return;
 		}
 		Vector3 direction = player.position - transform.position;
@@ -78,7 +78,7 @@ public class PoliceCar : MonoBehaviour {
         UpdateDmgInfo();
     }
 
-	private void UpdateCrime() {
+	private void UpdateCrime(Vector3 position, Vector3 dir) {
 		Vector3 direction = player.position - transform.position;
 		direction.Normalize();
 		float strInput = Vector3.Dot(direction, transform.right);
