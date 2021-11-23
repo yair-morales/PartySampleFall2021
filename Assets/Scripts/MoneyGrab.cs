@@ -13,15 +13,13 @@ public class MoneyGrab : MonoBehaviour
         bal -= amt;
         return true;
     }
+    
     public void OnTriggerEnter2D(Collider2D other)
     {
-   
+        if (other.gameObject.TryGetComponent(out MoneyPrefab money))
         {
-            if other.gameobject.TryGetComponent(out MoneyPrefab money)
-            {
-                bal += money.cashAmount;
-                Destroy(other.gameobject);
-            }
+            bal += money.cashAmount;
+            Destroy(other.gameObject);
         }
     }
 }
